@@ -16,7 +16,7 @@ class BitStream:
         a= ''
         for i in range(size):
             if self.pos == -1:
-                self.buffer = self.file.leer(1)
+                self.buffer = self.file.read(1)
                 if self.buffer == b'':
                     return ''
                 else:
@@ -46,13 +46,13 @@ class BitStream:
     def cerrar(self):
         if self.mode[0] == 'w':
             self.vaciar()
-        self.file.cerrar()
+        self.file.close()
 
     def vaciar(self):
-        if self.pos == -1:
-            while self.pos != 7:
+        if self.pos != 7:
+            while self.pos > -1:
                 self.buffer <<= 1
                 self.pos -= 1
-        self.file.escribir(self.buffer.to_bytes(1, byteorder='pequeño'))
+            self.file.write(self.buffer.to_bytes(1, byteorder='little'))
         self.pos = 7
         self.buffer = 0

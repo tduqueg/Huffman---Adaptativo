@@ -6,7 +6,7 @@ class ArbolHuffman:
         self.raiz = Nodo()
         self.bytes = {}
         self.nodoVacio = self.raiz
-        self.orden = order
+        self.order = order
         self.contador = 0
 
     def existe(self, char):
@@ -23,7 +23,7 @@ class ArbolHuffman:
 #codificador
     def codificador(self, file):
         char = b''
-        char = file.leer(self.orden)
+        char = file.read(self.order)
         if char==b'':
             return b''
         
@@ -34,9 +34,9 @@ class ArbolHuffman:
             self.addChar(char)
         else:
             nodo = self.bytes[char]
-            codigo = self.codigohuffman(nodo)
+            codigo = self.codigoHuffman(nodo)
 
-        self.acutalizarArbol(self.bytes[char])
+        self.actualizarArbol(self.bytes[char])
         return codigo
 
     def finArchivo(self):
@@ -83,13 +83,13 @@ class ArbolHuffman:
         nodo = self.reHuffmancod(file)
         if nodo == self.nodoVacio:
             codigo = ''
-            for i in range(self.orden):
+            for i in range(self.order):
                 codigo += file.leer(8)
             
             char = nodo.char
             for i in range(int(len(codigo)/8)):
                 ch= int(codigo[i*8:i*8+8], 2)
-                char += ch.to_bytes(1, byteorden='litlle')
+                char += ch.to_bytes(1, byteorder='little')
             self.addChar(char)
         else:
             char = nodo.char
@@ -115,7 +115,7 @@ class ArbolHuffman:
         return nodo
 
     def printArbol(self):
-        print('-------- El Mejor Arbol --------')
+        print('-------- El Mejor Árbol --------')
         q = Queue()
         q.put(self.raiz)
         nivel = 0

@@ -20,7 +20,7 @@ class Codificador:
             escribirArchivo.escribir(codigo)
         self.arbol.printArbol()
         escribirArchivo.cerrar()
-        leerArchivo.cerrar()
+        leerArchivo.close()
 
 if __name__ == '__main__':
     codificador = Codificador()

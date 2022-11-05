@@ -2,40 +2,40 @@ class Nodo:
     def __init__(self, char=None):
         self.peso = 0
         self.padre = None
-        self.derecha = None
-        self.izquierda = None
+        self.der = None
+        self.izq = None
         self.nivel = 0
 
         if char == None:
-            self.char = [b'*']
+            self.char = b''
         else:
             self.char = char
 
     def setIzq(self, nodo):
-        self.izquierda = nodo
+        self.izq = nodo
         nodo.padre = self
-        nodo.updateLevel()
+        nodo.actNivel()
 
     def setDer(self, nodo):
-        self.derecha = nodo
+        self.der = nodo
         nodo.padre = self
-        nodo.updateLevel()
+        nodo.actNivel()
 
     def remplazarHijo(self, hijo, nodo):
-        if self.izquierda == hijo:
+        if self.izq == hijo:
             self.setIzq(nodo)
-        elif self.derecha == hijo:
+        elif self.der == hijo:
             self.setDer(nodo)
 
     def actNivel(self):
         self.nivel = self.padre.nivel +1
-        if self.derecha:
-            self.derecha.actNivel()
-        if self.izquierda:
-            self.izquierda.actNivel()
+        if self.der:
+            self.der.actNivel()
+        if self.izq:
+            self.izq.actNivel()
     
     def sinHijo(self):
-        return self.izquierda == None and self.derecha == None
+        return self.izq == None and self.der == None
 
     def esAncestro(self, nodo):
         ancestro = self.padre
@@ -51,7 +51,7 @@ class Nodo:
         padre1 = self.padre
         padre2 = nodo.padre
         padre2.remplazarHijo(nodo, self)
-        padre1.rempazarHijo(self, nodo)
+        padre1.remplazarHijo(self, nodo)
 
 
 

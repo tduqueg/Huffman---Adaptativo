@@ -18,10 +18,10 @@ class Decodificador:
             char = self.arbol.decodificador(leerArchivo)
             if not char:
                 break
-            escribirArchivo.escribir(char)
+            escribirArchivo.write(char)
 
         leerArchivo.cerrar()
-        escribirArchivo.cerrar()
+        escribirArchivo.close()
 
 if __name__ == '__main__':
     decodificador = Decodificador()
