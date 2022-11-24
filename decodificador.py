@@ -25,4 +25,5 @@ class Decodificador:
 
 if __name__ == '__main__':
     decodificador = Decodificador()
-    decodificador.decoArchivo('./codigo.txt','./decodificado.txt')
+    i = 1
+    decodificador.decoArchivo(f'./textoCodificado/codigo_parte_{i}.txt',f'./decodificado_{i}.txt')

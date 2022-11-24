@@ -1,9 +1,7 @@
-<<<<<<< HEAD
-Bailalo mi grone
-=======
 Antonio Carmona
 Tomás Duque
 David Ruiz
 
-El mejor codificador de Huffman Adaptativo del mundo entero 
->>>>>>> 294458c438dbdd33f4a75106a29314f2bdfcf789
+Este es un proyecto de compresión de texto con la codificación de Huffman hecho en Python, el programa se encarga de dividir un archivo en varios archivos de 2kb para luego realizar multiprocesamiento y codificar estos archivos.
+
+El proyecto se inicializa con la función codificador.
